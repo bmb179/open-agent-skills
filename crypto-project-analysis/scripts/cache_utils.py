@@ -91,12 +91,14 @@ def cached_fetch(
         if cached:
             return cached
 
+    # Try live
     result = fetch_func()
     if result:
         save_to_cache(key, result, source="live")
         return result
 
-    cached = load_from_cache(key, max_age_hours=72)
+    # Live failed — try cache as last resort (even if slightly stale)
+    cached = load_from_cache(key, max_age_hours=72)  # more lenient on fallback
     if cached:
         print(f"[CACHE] Live fetch failed for '{key}'. Falling back to cached data.", file=sys.stderr)
         return cached
@@ -104,6 +106,7 @@ def cached_fetch(
     return None
 
 
+# For standalone testing
 if __name__ == "__main__":
     import sys
     print("cache_utils.py — Simple caching helper for crypto-project-analysis skill")
