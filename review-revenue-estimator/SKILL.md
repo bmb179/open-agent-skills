@@ -7,7 +7,7 @@ description: Estimate absolute monthly and annual revenue for local businesses w
 
 Estimate monthly and annual revenue *ranges* for businesses that appear on Google Business Profile, Yelp, and/or Meta using public review flow as a proxy for transaction volume.
 
-**Final numbers MUST come from** `scripts/estimate_revenue.py`. Do not hand-calculate the published range.
+**Final numbers MUST come from** `/home/workdir/.grok/skills/review-revenue-estimator/scripts/estimate_revenue.py`. Do not hand-calculate the published range.
 
 ## Model (read this before collecting data)
 
@@ -56,7 +56,7 @@ Prefer a specific key (`qsr`, `dental`) over an umbrella.
 ### 3. Run the script
 
 ```bash
-python3 scripts/estimate_revenue.py \
+python3 /home/workdir/.grok/skills/review-revenue-estimator/scripts/estimate_revenue.py \
   --name "Exact Business Name" \
   --location "City, State" \
   --industry "auto_services" \
